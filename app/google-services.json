@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "943249427528",
+    "firebase_url": "https://texopanda-9c827.firebaseio.com",
+    "project_id": "texopanda-9c827",
+    "storage_bucket": "texopanda-9c827.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943249427528:android:8753a5242a6320c2",
+        "android_client_info": {
+          "package_name": "com.texopanda.texopandaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "943249427528-5pti51aen40l8d5n7a67ho53pqfjkaqv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.texopanda.texopandaapp",
+            "certificate_hash": "ec33ed0575eea7698612f768d34c19653eda40c9"
+          }
+        },
+        {
+          "client_id": "943249427528-p45i0qhko4jbglkfoipdih6ifhk51vmu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR0R3uWKvYb7-Jh7_eYaHEwUI2wf_8Nmo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "943249427528-p45i0qhko4jbglkfoipdih6ifhk51vmu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
