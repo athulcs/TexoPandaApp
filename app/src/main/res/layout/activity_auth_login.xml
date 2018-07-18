@@ -113,10 +113,10 @@
         android:layout_height="0dp"
         android:layout_marginBottom="32dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/auth_login_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/auth_login_bgbottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/auth_login_tab2" />
+        app:layout_constraintTop_toBottomOf="@+id/auth_login_tab1" />
 
 
 

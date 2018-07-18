@@ -13,8 +13,12 @@
                       <PersistentState>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_android_black_24dp" />
-                            <entry key="sourceFile" value="C:\Users\RAZOR\Documents\Designs\wave_lines.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="height" value="12" />
+                            <entry key="outputName" value="ic_arrow" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="C:\Users\RAZOR\Documents\Designs\Arrow.svg" />
+                            <entry key="width" value="20" />
                           </map>
                         </option>
                       </PersistentState>

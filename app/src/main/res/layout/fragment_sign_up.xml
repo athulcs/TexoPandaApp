@@ -4,18 +4,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    app:layout_anchorGravity="center"
+    android:foregroundGravity="center"
     tools:context=".SignUpFragment">
+
+
+
 
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="16dp">
+        android:layout_height="250dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="25dp"
+        android:layout_marginBottom="64dp">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="16dp">
+            android:layout_margin="25dp">
 
             <LinearLayout
                 android:id="@+id/auth_frag_signup_email"
@@ -51,7 +61,6 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/auth_frag_signup_email">
@@ -73,5 +82,18 @@
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v7.widget.CardView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/auth_frag_signup_fab"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="32dp"
+
+        android:backgroundTint="#4285F4"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_arrow"
+        app:fabSize="normal" />
 
 </FrameLayout>
