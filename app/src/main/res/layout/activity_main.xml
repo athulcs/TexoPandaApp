@@ -59,7 +59,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_tv">
-
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <EditText
             android:id="@+id/login_email_et"
             android:layout_width="match_parent"
@@ -67,7 +69,11 @@
             android:ems="10"
             android:hint="@string/e_mail"
             android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <EditText
             android:id="@+id/login_pass_et"
             android:layout_width="match_parent"
@@ -75,6 +81,7 @@
             android:ems="10"
             android:hint="@string/password"
             android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
