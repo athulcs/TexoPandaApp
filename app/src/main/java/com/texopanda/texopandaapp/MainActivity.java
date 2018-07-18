@@ -1,5 +1,6 @@
 package com.texopanda.texopandaapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        startActivity(new Intent(this, AuthMainActivity.class));
         user=findViewById(R.id.username_et);
         email=findViewById(R.id.email_et);
         phonenum=findViewById(R.id.phnumber_et);
