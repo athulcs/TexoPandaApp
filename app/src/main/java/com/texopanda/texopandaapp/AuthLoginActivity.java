@@ -19,7 +19,6 @@ public class AuthLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
         setContentView(R.layout.activity_auth_login);
 
         loginTab = findViewById(R.id.auth_login_tab1);
