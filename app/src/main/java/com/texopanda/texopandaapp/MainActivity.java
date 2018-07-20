@@ -19,9 +19,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity {
-    TextView reguser;
-    EditText email;
-    EditText pass;
+    private TextView reguser;
+    private EditText email;
+    private EditText pass;
 
     FirebaseAuth auth;
     @Override
@@ -40,12 +40,12 @@ public class MainActivity extends AppCompatActivity {
         String pa= pass.getText().toString();
 
        if (TextUtils.isEmpty(em)) {
-           Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+           email.setError("Enter email address");
            return;
        }
 
        if (TextUtils.isEmpty(pa)) {
-           Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+           pass.setError("Enter Password");
            return;
        }
 
