@@ -13,7 +13,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:text="Logged in Successfully"
+        android:text="Events"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
         android:fontFamily="cursive"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,10 +26,41 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
-        android:text="Logout"
+        android:layout_marginTop="80dp"
         android:onClick="logout"
-        app:layout_constraintEnd_toEndOf="@+id/username_tv"
-        app:layout_constraintStart_toStartOf="@+id/username_tv"
-        app:layout_constraintTop_toBottomOf="@+id/username_tv" />
+        android:text="Logout"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_tv">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register_bt" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register_bt" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register_bt" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
