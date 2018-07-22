@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         startActivity(new Intent(this, AuthMainActivity.class));
+        finish();
         user=findViewById(R.id.username_et);
         email=findViewById(R.id.email_et);
         phonenum=findViewById(R.id.phnumber_et);
