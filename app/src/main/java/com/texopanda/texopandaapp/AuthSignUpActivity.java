@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -63,6 +65,20 @@ public class AuthSignUpActivity extends AppCompatActivity {
                                     } else {
                                         User newUser = new User(user.getText().toString(), email.getText().toString(), phone.getText().toString());
                                         if (auth.getUid() != null) {
+                                            FirebaseUser currentUser =auth.getCurrentUser();
+                                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                                    .setDisplayName(user.getText().toString())
+                                                    .build();
+
+                                            currentUser.updateProfile(profileUpdates)
+                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if (task.isSuccessful()) {
+                                                                Log.d("updateProfile", "User profile updated.");
+                                                            }
+                                                        }
+                                                    });
                                             mDatabaseReference.child(auth.getUid()).setValue(newUser);
                                             finish();
                                         } else {
@@ -72,6 +88,7 @@ public class AuthSignUpActivity extends AppCompatActivity {
                                 }
 
                             });
+
                 }
                 else{
                     cpass.setText("");
