@@ -1,10 +1,18 @@
 package com.texopanda.texopandaapp;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Pair;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -15,37 +23,52 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    FirebaseDatabase database;
 
-    EditText user,email,phonenum,pass;
+
+    private ImageView logo;
+    private TextView title;
+    private GestureDetectorCompat gesture;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        setContentView(R.layout.activity_auth_main);
+        logo = findViewById(R.id.auth_main_logo);
+        title = findViewById(R.id.auth_main_title);
+        gesture = new GestureDetectorCompat(this, new MainActivity.LearnGesture());
 
-        startActivity(new Intent(this, AuthMainActivity.class));
-        finish();
-        user=findViewById(R.id.username_et);
-        email=findViewById(R.id.email_et);
-        phonenum=findViewById(R.id.phnumber_et);
-        pass=findViewById(R.id.password);
+        Toast.makeText(this, "Double Swipe Anywhere to Continue", Toast.LENGTH_SHORT).show();
 
 
-        database = FirebaseDatabase.getInstance();
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        this.gesture.onTouchEvent(event);
+        return super.onTouchEvent(event);
 
-    void fireBase(View view){
-        DatabaseReference myRef = database.getReference("users");
+    }
 
-        Map <String, String> userData = new HashMap<>();
-        userData.put("email", email.getText().toString());
-        userData.put("phone", phonenum.getText().toString());
-        userData.put("pass", pass.getText().toString());
+    private void loginInAndSignUp() {
+        Pair[] pair  = new Pair[2];
+        pair[0] = new Pair<View,String>(logo, "logo_shared");
+        pair[1] = new Pair<View,String>(title, "texopandaapp_shared");
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, pair);
+        Intent i = new Intent(this, AuthLoginActivity.class);
+        startActivity(i, options.toBundle());
+        finish();
+    }
 
-        myRef.child(user.getText().toString()).setValue(userData);
-
-        Toast.makeText(this,"User Registered",Toast.LENGTH_SHORT).show();
-
+    class LearnGesture extends GestureDetector.SimpleOnGestureListener{
+        @Override
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+            if (distanceY > 0 && distanceX > 0) {
+                // Scrolled upward
+                loginInAndSignUp();
+            }
+            return false;
+        }
     }
 }
+

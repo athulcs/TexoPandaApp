@@ -1,23 +1,33 @@
 package com.texopanda.texopandaapp;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.transition.ChangeBounds;
 import android.transition.Transition;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class AuthLoginActivity extends AppCompatActivity {
 
     private TextView loginTab, signUpTab;
-    private ConstraintLayout layout;
-
     private ViewPager authPager;
-
+    private FirebaseAuth auth;
     private PagerViewAdapter pagerAdapter;
 
     @Override
@@ -31,7 +41,6 @@ public class AuthLoginActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
 
-
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_auth_login);
@@ -39,13 +48,15 @@ public class AuthLoginActivity extends AppCompatActivity {
 
         loginTab = findViewById(R.id.auth_login_tab1);
         signUpTab = findViewById(R.id.auth_login_tab2);
-
+        auth=FirebaseAuth.getInstance();
         authPager = findViewById(R.id.auth_login_pager);
 
 
 
         pagerAdapter = new PagerViewAdapter(getSupportFragmentManager());
         authPager.setAdapter(pagerAdapter);
+
+
 
         loginTab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,4 +123,33 @@ public class AuthLoginActivity extends AppCompatActivity {
         finish();
         super.onBackPressed();
     }
+
+    public void login(String em,String pa) {
+
+
+        if (TextUtils.isEmpty(em)) {
+            Toast.makeText(AuthLoginActivity.this,"Enter email",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(pa)) {
+            Toast.makeText(AuthLoginActivity.this,"Enter password",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        auth.signInWithEmailAndPassword(em, pa)
+                .addOnCompleteListener(AuthLoginActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(AuthLoginActivity.this, "Username and Password does not match : " + task.getException(), Toast.LENGTH_LONG).show();
+                        } else {
+                            Intent intent = new Intent(AuthLoginActivity.this, EventsActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
+    }
+
 }
