@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startActivity(new Intent(this, AuthMainActivity.class));
+        startActivity(new Intent(this, LandingActivity.class));
         finish();
         user=findViewById(R.id.username_et);
         email=findViewById(R.id.email_et);

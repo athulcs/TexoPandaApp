@@ -19,9 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AuthMainActivity" android:noHistory="true"/>
+        <activity
+            android:name=".AuthMainActivity"
+            android:noHistory="true" />
         <activity android:name=".AuthLoginActivity" />
-        <activity android:name=".AuthSignUpActivity"></activity>
+        <activity android:name=".AuthSignUpActivity" />
+        <activity android:name=".LandingActivity"></activity>
     </application>
 
 </manifest>
