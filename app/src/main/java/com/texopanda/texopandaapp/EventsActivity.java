@@ -63,7 +63,8 @@ public class EventsActivity extends AppCompatActivity {
                     if(eventList.get(i)){
                         Button button;
                         View v=eventsLayout.getChildAt((2*i)+1);
-                        v.setBackgroundColor(Color.parseColor("#00FF00"));
+                        v.setBackgroundColor(Color.GREEN);
+                        v.setClickable(false);
                         if (v instanceof Button){
                             button = (Button) v;
                             button.setText("REGISTERED");
@@ -89,6 +90,14 @@ public class EventsActivity extends AppCompatActivity {
             }
         });
 
-  
+
+    }
+
+    public void register(View view){
+        dbRef.child("events").child(view.getTag().toString()).setValue(true);
+        view.setBackgroundColor(Color.GREEN);
+        view.setClickable(false);
+        Button button = (Button) view;
+        button.setText("REGISTERED");
     }
 }
