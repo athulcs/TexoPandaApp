@@ -20,6 +20,11 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class AuthSignUpActivity extends AppCompatActivity {
 
 
@@ -63,7 +68,9 @@ public class AuthSignUpActivity extends AppCompatActivity {
                                     if (!task.isSuccessful()) {
                                         Toast.makeText(AuthSignUpActivity.this, "Authentication failed." + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     } else {
-                                        User newUser = new User(user.getText().toString(), email.getText().toString(), phone.getText().toString());
+                                        List<Boolean> events=new ArrayList<Boolean>(Arrays.asList(new Boolean[4]));
+                                        Collections.fill(events,Boolean.FALSE);
+                                        User newUser = new User(user.getText().toString(), email.getText().toString(), phone.getText().toString(),events);
                                         if (auth.getUid() != null) {
                                             FirebaseUser currentUser =auth.getCurrentUser();
                                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()

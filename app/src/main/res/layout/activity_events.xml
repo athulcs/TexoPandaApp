@@ -78,7 +78,8 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="REGISTER" />
+            android:text="REGISTER"
+            android:tag="0"/>
 
         <TextView
             android:id="@+id/textView4"
@@ -92,8 +93,8 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#31d000"
-            android:text="REGISTER" />
+            android:text="REGISTER"
+            android:tag="1"/>
 
         <TextView
             android:id="@+id/textView6"
@@ -107,7 +108,24 @@
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="REGISTER" />
+            android:text="REGISTER"
+            android:tag="2"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/aclonica"
+            android:gravity="center"
+            android:text="Blur" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REGISTER"
+            android:tag="3"/>
 
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

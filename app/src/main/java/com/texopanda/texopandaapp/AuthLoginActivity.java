@@ -49,9 +49,9 @@ public class AuthLoginActivity extends AppCompatActivity {
         loginTab = findViewById(R.id.auth_login_tab1);
         signUpTab = findViewById(R.id.auth_login_tab2);
         auth=FirebaseAuth.getInstance();
-        if(auth!=null){
+      /*  if(auth!=null){
            startActivity(new Intent(this,EventsActivity.class));
-        }
+        }*/
         authPager = findViewById(R.id.auth_login_pager);
 
 
