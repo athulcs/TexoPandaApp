@@ -20,13 +20,17 @@
         </activity>
         <activity android:name=".RegisterUserActivity" />
         <activity android:name=".DashBoardActivity" />
-        <activity
-            android:name=".EventsActivity"
-            android:label="@string/title_activity_events"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

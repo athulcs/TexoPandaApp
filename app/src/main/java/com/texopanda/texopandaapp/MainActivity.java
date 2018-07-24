@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                        if (!task.isSuccessful()) {
                            Toast.makeText(MainActivity.this, "Username and Password does not match : "+task.getException(), Toast.LENGTH_LONG).show();
                        } else {
-                           Intent intent = new Intent(MainActivity.this, EventsActivity.class);
+                           Intent intent = new Intent(MainActivity.this, ScrollingActivity.class);
                            startActivity(intent);
                        }
                    }
