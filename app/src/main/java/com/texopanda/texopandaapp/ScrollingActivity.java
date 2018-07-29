@@ -1,5 +1,6 @@
 package com.texopanda.texopandaapp;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -28,12 +30,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ScrollingActivity extends AppCompatActivity
-                            implements DevsFragment.OnFragmentInteractionListener{
-    private CoordinatorLayout coordinatorLayout;
+public class ScrollingActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private FirebaseAuth auth;
     private DatabaseReference dbRef;
+    private ActionBarDrawerToggle mToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,16 +42,17 @@ public class ScrollingActivity extends AppCompatActivity
         setContentView(R.layout.activity_scrolling);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        coordinatorLayout = findViewById(R.id.coordinator_layout);
         mDrawerLayout = findViewById(R.id.drawer_layout);
+
+
+        mToggle = new ActionBarDrawerToggle(ScrollingActivity.this, mDrawerLayout, R.string.open, R.string.close);
+
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         auth = FirebaseAuth.getInstance();
         dbRef = FirebaseDatabase.getInstance().getReference("users").child(auth.getUid());
-
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
-
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
@@ -65,11 +67,7 @@ public class ScrollingActivity extends AppCompatActivity
                             case R.id.nav_logout:logout();break;
                             case R.id.nav_reg_events:;break;
                             case R.id.nav_support:;break;
-                            case R.id.nav_dev:
-                                DevsFragment devsFragment = new DevsFragment();
-                                getSupportFragmentManager().beginTransaction()
-                                .add(R.id.coordinator_layout,devsFragment)
-                                .commit();break;
+                            case R.id.nav_dev:startActivity(new Intent(ScrollingActivity.this,DevsActivity.class));break;
                         }
                         // Add code here to update the UI based on the item selected
                         // For example, swap UI fragments here
@@ -118,10 +116,8 @@ public class ScrollingActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                return true;
+        if (mToggle.onOptionsItemSelected(item)) {
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -136,8 +132,4 @@ public class ScrollingActivity extends AppCompatActivity
         button.setText("REGISTERED");
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 }

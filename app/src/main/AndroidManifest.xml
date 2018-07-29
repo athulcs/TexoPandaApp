@@ -19,7 +19,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterUserActivity" />
-        <activity android:name=".DashBoardActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
@@ -28,7 +27,8 @@
         <activity
             android:name=".ScrollingActivity"
             android:label="@string/title_activity_scrolling"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".DevsActivity">
 
         </activity>
     </application>
