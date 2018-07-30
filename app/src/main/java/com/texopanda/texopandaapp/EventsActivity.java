@@ -109,8 +109,8 @@ public class EventsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(EventsActivity.this);
                 builder.setTitle(R.string.app_name);
-                builder.setIcon(R.mipmap.ic_launcher);
-                builder.setMessage("Do you really want to LogOut?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setIcon(R.drawable.ic_logo_auth);
+                builder.setMessage("Do you really want to Logout?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         logout();
