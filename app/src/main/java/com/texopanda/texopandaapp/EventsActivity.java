@@ -1,10 +1,13 @@
 package com.texopanda.texopandaapp;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -21,6 +24,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,6 +42,7 @@ public class EventsActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private DatabaseReference dbRef;
     private ActionBarDrawerToggle mToggle;
+    private ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +82,9 @@ public class EventsActivity extends AppCompatActivity {
                         return true;
                     }
                 });
+        pd = new ProgressDialog(EventsActivity.this);
+        pd.setMessage("loading");
+        pd.show();
 
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -89,7 +98,10 @@ public class EventsActivity extends AppCompatActivity {
                         int resourceId = EventsActivity.this.getResources().
                                 getIdentifier("button"+i, "id", EventsActivity.this.getPackageName());
                         button = findViewById(resourceId);
+                        button.setBackgroundResource(R.drawable.button_registered);
+                        button.setTextColor(Color.WHITE);
                         button.setText("REGISTERED");
+                        pd.hide();
                     }
                 }
 
@@ -141,10 +153,17 @@ public class EventsActivity extends AppCompatActivity {
         auth.signOut();
         finish();
     }
-    public void register(View view){
-        dbRef.child("events").child(view.getTag().toString()).setValue(true);
-        Button button = (Button) view;
-        button.setText("REGISTERED");
+    public void register(final View view){
+        dbRef.child("events").child(view.getTag().toString()).setValue(true).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Button button = (Button) view;
+                button.setBackgroundResource(R.drawable.button_registered);
+                button.setTextColor(Color.WHITE);
+                button.setText("REGISTERED");
+            }
+        });
+
     }
 
 }

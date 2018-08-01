@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DevsFragment"
     android:orientation="vertical"
+    android:background="@drawable/bg_auth"
     android:padding="8dp">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="100dp"
+        android:alpha="0.9">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -35,6 +36,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:text="Athul CS"
+                android:fontFamily="@font/raleway_thin"
+                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView_athul"
                 app:layout_constraintTop_toTopOf="@+id/imageView_athul" />
 
@@ -43,6 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Backend Developer"
+                android:fontFamily="@font/raleway_thin"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/textView_athul"
                 app:layout_constraintTop_toBottomOf="@+id/textView_athul" />
 
@@ -53,7 +58,8 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:alpha="0.9">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -78,6 +84,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:text="Shekar Jha"
+                android:fontFamily="@font/raleway_thin"
+                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView_shekar"
                 app:layout_constraintTop_toTopOf="@+id/imageView_shekar" />
 
@@ -86,6 +94,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Frontend Developer"
+                android:fontFamily="@font/raleway_thin"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/textView_shekar"
                 app:layout_constraintTop_toBottomOf="@+id/textView_shekar" />
 
